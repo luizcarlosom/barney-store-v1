@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderController">
    <children>
-      <ComboBox fx:id="categoryComboBox" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" promptText="Categorias" />
-      <ImageView fitHeight="207.0" fitWidth="224.0" layoutX="376.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+      <ComboBox fx:id="categoryComboBox" layoutY="1.0" prefHeight="27.0" prefWidth="750.0" promptText="Categorias" />
+      <ImageView fitHeight="207.0" fitWidth="224.0" layoutX="526.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@homer-simpson.png" />
          </image>
       </ImageView>
+      <TableView fx:id="productsTable" editable="true" layoutY="28.0" opacity="0.87" prefHeight="378.0" prefWidth="750.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" editable="false" prefWidth="150.0" sortable="false" text="Nome" />
+          <TableColumn fx:id="quantityColumn" editable="false" prefWidth="150.0" sortable="false" text="Quantidade Disponivel" />
+            <TableColumn fx:id="valueColumn" editable="false" minWidth="0.0" prefWidth="150.0" sortable="false" text="Valor Unidade" />
+            <TableColumn fx:id="categoryColumn" editable="false" prefWidth="150.0" sortable="false" text="Categoria" />
+            <TableColumn fx:id="desiredQuantity" editable="false" prefWidth="150.0" sortable="false" text="Quantidade Desejada" style="-fx-background-color: lightblue -fx; -fx-border-color: black; -fx-border-width: 0.5px; -fx-border-style: solid;"/>
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
