@@ -1,7 +1,13 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -13,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class OrderController implements Initializable { 
 
@@ -36,7 +43,12 @@ public class OrderController implements Initializable {
 
     @FXML
     private TableColumn<Product, Integer> desiredQuantity;
-    
+
+    @FXML
+    private Button finishedOrderButton;
+
+    private ObservableList<Product> allProducts = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCategories();
@@ -56,6 +68,8 @@ public class OrderController implements Initializable {
             Product product = event.getRowValue();
             product.setDesiredQuantity(event.getNewValue());
         });
+
+        categoryComboBox.setOnAction(event -> filterProductsByCategory());
     }
 
     private void loadCategories() {
@@ -108,13 +122,67 @@ public class OrderController implements Initializable {
                         Integer.parseInt(values[2]),
                         Double.parseDouble(values[3])
                     );
-                    productsTable.getItems().add(product);
+                    allProducts.add(product);
                 }
             }
+            productsTable.setItems(allProducts);
             br.close();
         } catch (Exception e) {
             System.out.println("Erro ao ler o arquivo CSV: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    private void filterProductsByCategory() {
+        String selectedCategory = categoryComboBox.getValue();
+        if (selectedCategory == null || selectedCategory.isEmpty()) {
+            productsTable.setItems(allProducts);
+        } else {
+            ObservableList<Product> filteredProducts = allProducts.stream()
+                .filter(product -> product.categoryProperty().get().equals(selectedCategory))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+            productsTable.setItems(filteredProducts);
+        }
+    }
+
+    @FXML
+    void finishedOrder(ActionEvent event) {
+        ObservableList<Product> selectedProducts = allProducts.stream()
+            .filter(product -> product.desiredQuantityProperty().get() > 0)
+            .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+        if (selectedProducts.isEmpty()) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Carrinho Vazio");
+            alert.setHeaderText(null);
+            alert.setContentText("O carrinho está vazio! Adicione produtos antes de finalizar o pedido.");
+            alert.showAndWait();
+        } else {
+            double totalPrice = 0.0;
+
+            StringBuilder orderDetails = new StringBuilder();
+            orderDetails.append("Itens selecionados:\n\n");
+
+            for (Product product : selectedProducts) {
+                double productTotal = product.desiredQuantityProperty().get() * product.valueProperty().get();
+                totalPrice += productTotal;
+
+                orderDetails.append("- ")
+                            .append(product.nameProperty().get())
+                            .append(" | Quantidade: ").append(product.desiredQuantityProperty().get())
+                            .append(" | Unitário: R$ ").append(String.format("%.2f", product.valueProperty().get()))
+                            .append(" | Total: R$ ").append(String.format("%.2f", productTotal))
+                            .append("\n");
+            }
+
+            orderDetails.append("\nPreço total do pedido: R$ ")
+                        .append(String.format("%.2f", totalPrice));
+
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Resumo do Pedido");
+            alert.setHeaderText("Pedido Finalizado com Sucesso!");
+            alert.setContentText(orderDetails.toString());
+            alert.showAndWait();
         }
     }
 }

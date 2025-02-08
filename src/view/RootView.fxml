@@ -51,7 +51,12 @@
             <Font name="Georgia Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutY="358.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="42.0" prefWidth="600.0" text="Fazer pedido">
+      <Button layoutX="292.0" layoutY="358.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="42.0" prefWidth="308.0" text="Cliente">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="manegementButton" layoutX="-16.0" layoutY="358.0" mnemonicParsing="false" onAction="#viewDash" prefHeight="42.0" prefWidth="308.0" text="Gerência">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
