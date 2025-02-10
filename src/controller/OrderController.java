@@ -20,6 +20,10 @@ import java.io.FileReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.File;
+import java.util.List;
 
 public class OrderController implements Initializable { 
 
@@ -159,11 +163,22 @@ public class OrderController implements Initializable {
             alert.showAndWait();
         } else {
             double totalPrice = 0.0;
-
             StringBuilder orderDetails = new StringBuilder();
             orderDetails.append("Itens selecionados:\n\n");
 
             for (Product product : selectedProducts) {
+                int newQuantity = product.quantityProperty().get() - product.desiredQuantityProperty().get();
+
+                if (newQuantity < 0) {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Estoque Insuficiente");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Estoque insuficiente para o produto: " + product.nameProperty().get());
+                    alert.showAndWait();
+                    return;
+                }
+
+                product.setQuantity(newQuantity);
                 double productTotal = product.desiredQuantityProperty().get() * product.valueProperty().get();
                 totalPrice += productTotal;
 
@@ -178,6 +193,8 @@ public class OrderController implements Initializable {
             orderDetails.append("\nPreço total do pedido: R$ ")
                         .append(String.format("%.2f", totalPrice));
 
+            updateStockCSV(allProducts);
+
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Resumo do Pedido");
             alert.setHeaderText("Pedido Finalizado com Sucesso!");
@@ -185,4 +202,36 @@ public class OrderController implements Initializable {
             alert.showAndWait();
         }
     }
+
+    private void updateStockCSV(List<Product> products) {
+        try {
+            URL pathDatabase = getClass().getResource("../database/Product.csv");
+            if (pathDatabase == null) {
+                System.out.println("Arquivo Product.csv não encontrado!");
+                return;
+            }
+    
+            File file = new File(pathDatabase.toURI());
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+    
+            writer.write("ID,Name,Quantity,Value,Category");
+            writer.newLine();
+    
+            for (Product product : products) {
+                writer.write(product.nameProperty().get() + "," +
+                             product.quantityProperty().get() + "," +
+                             product.valueProperty().get() + "," +
+                             product.categoryProperty().get());
+                writer.newLine();
+            }
+    
+            writer.close();
+            System.out.println("Estoque atualizado com sucesso!");
+    
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar o arquivo CSV: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }    
+
 }

@@ -51,8 +51,8 @@ public class Product {
         this.category = category;
     }
 
-    public void setQuantity(SimpleIntegerProperty quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int quantity) {
+        this.quantity.set(quantity);
     }
 
     public void setValue(SimpleDoubleProperty value) {
