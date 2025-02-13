@@ -1,4 +1,4 @@
-NAME,CATEGORIA,QUANTITY,VALUE
+NAME,CATEGORY,QUANTITY,VALUE
 Cerveja Pilsen,Com Alcool,50,4.99
 Suco de Laranja,Sem Alcool,30,3.49
 Água Mineral,Sem Alcool,100,1.99
@@ -9,15 +9,4 @@ Vodka,Com Alcool,25,19.99
 Whisky,Com Alcool,15,49.99
 Suco de Uva,Sem Alcool,35,4.29
 Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
-Cerveja Lager,Com Alcool,55,4.59
+
