@@ -62,4 +62,9 @@ public class Product {
     public void setDesiredQuantity(int desiredQuantity) {
         this.desiredQuantity.set(desiredQuantity);
     }
+    
+    @Override
+    public String toString() {
+        return name.get() + "," + category.get() + "," + quantity.get() + "," + value.get();
+    }
 }
