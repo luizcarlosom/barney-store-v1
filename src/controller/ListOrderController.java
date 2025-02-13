@@ -10,36 +10,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
-public class RootController {
-    @FXML
-    private Button manegementButton;
+public class ListOrderController {
 
     @FXML
-    void placeOrder(ActionEvent event) {
-         try {
-            URL orderPath = getClass().getResource("../view/OrderView.fxml");
-            FXMLLoader loader = new FXMLLoader(orderPath);
-            Parent newRoot = loader.load();
-
-            Node sourceNode = (Node) event.getSource();
-
-            Scene currentScene = sourceNode.getScene();
-
-            Stage stage = (Stage) currentScene.getWindow();
-
-            stage.setScene(new Scene(newRoot));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private TableColumn<?, ?> ListOrderTable;
 
     @FXML
-    void signInManagementArea(ActionEvent event) {
+    private Button backButton;
+
+    @FXML
+    void backPage(ActionEvent event) {
         try {
-            URL orderPath = getClass().getResource("../view/ManagementView.fxml");
+            URL orderPath = getClass().getResource("../view/MenuManagementView.fxml");
             FXMLLoader loader = new FXMLLoader(orderPath);
             Parent newRoot = loader.load();
 
@@ -55,4 +40,5 @@ public class RootController {
             e.printStackTrace();
         }
     }
+
 }

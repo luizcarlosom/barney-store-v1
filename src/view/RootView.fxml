@@ -56,7 +56,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="manegementButton" layoutX="-16.0" layoutY="358.0" mnemonicParsing="false" onAction="#viewDash" prefHeight="42.0" prefWidth="308.0" text="Gerência">
+      <Button fx:id="manegementButton" layoutX="-16.0" layoutY="358.0" mnemonicParsing="false" onAction="#signInManagementArea" prefHeight="42.0" prefWidth="308.0" text="Gerência">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

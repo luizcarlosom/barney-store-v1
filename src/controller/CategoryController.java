@@ -10,36 +10,32 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class RootController {
-    @FXML
-    private Button manegementButton;
+public class CategoryController {
 
     @FXML
-    void placeOrder(ActionEvent event) {
-         try {
-            URL orderPath = getClass().getResource("../view/OrderView.fxml");
-            FXMLLoader loader = new FXMLLoader(orderPath);
-            Parent newRoot = loader.load();
+    private Button backButton;
 
-            Node sourceNode = (Node) event.getSource();
+    @FXML
+    private Button buttonAddProduct;
 
-            Scene currentScene = sourceNode.getScene();
+    @FXML
+    private TextField categoryField;
 
-            Stage stage = (Stage) currentScene.getWindow();
+    @FXML
+    private TextField nameField;
 
-            stage.setScene(new Scene(newRoot));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @FXML
+    void addProduct(ActionEvent event) {
+
     }
 
     @FXML
-    void signInManagementArea(ActionEvent event) {
+    void backPage(ActionEvent event) {
         try {
-            URL orderPath = getClass().getResource("../view/ManagementView.fxml");
+            URL orderPath = getClass().getResource("../view/MenuManagementView.fxml");
             FXMLLoader loader = new FXMLLoader(orderPath);
             Parent newRoot = loader.load();
 
@@ -55,4 +51,5 @@ public class RootController {
             e.printStackTrace();
         }
     }
+
 }

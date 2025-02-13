@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuManagementController">
+   <children>
+      <Button fx:id="buttonNewCategory" layoutX="25.0" layoutY="145.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="50.0" prefWidth="550.0" text="Adicionar Categoria">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonNewProduct" layoutX="26.0" layoutY="80.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="50.0" prefWidth="550.0" text="Adicionar Produto">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonViewOrder" layoutX="25.0" layoutY="208.0" mnemonicParsing="false" onAction="#viewOrder" prefHeight="50.0" prefWidth="550.0" text="Vizualizar Pedidos">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonViewDash" layoutX="26.0" layoutY="271.0" mnemonicParsing="false" onAction="#viewDash" prefHeight="50.0" prefWidth="550.0" text="Vizualizar Dashboard">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
