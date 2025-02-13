@@ -7,16 +7,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListOrderController">
    <children>
-      <TableView layoutY="72.0" maxHeight="600.0" maxWidth="600.0" prefHeight="329.0" prefWidth="600.0">
+      <TableView fx:id="listOrderTable" layoutY="72.0" maxHeight="600.0" maxWidth="600.0" prefHeight="329.0" prefWidth="600.0">
         <columns>
-          <TableColumn maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Cliente" />
-          <TableColumn maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Telefone" />
-            <TableColumn fx:id="ListOrderTable" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Endereço" />
-            <TableColumn maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Preço Total" />
-            <TableColumn maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Pedido" />
+          <TableColumn fx:id="customerColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Cliente" />
+          <TableColumn fx:id="phoneNumberColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Telefone" />
+            <TableColumn fx:id="addressColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Endereço" />
+            <TableColumn fx:id="totalPriceColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Preço Total" />
+            <TableColumn fx:id="productsColumn" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Pedido" />
         </columns>
       </TableView>
       <Button fx:id="backButton" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backPage" text="Voltar" />

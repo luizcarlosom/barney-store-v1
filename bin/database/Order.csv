@@ -1,1 +1,2 @@
-COSTUMER,PHONE_NUMBER,ADDRESS,PRODUCTS,TOTAL_PRICE
+    COSTUMER,PHONE_NUMBER,ADDRESS,PRODUCTS,TOTAL_PRICE
+    Luiz Carlos,87991459844,"Tancredo Neves, 29, Belo Jardim, PE","Cerveja Pilsen (x20) - R$ 99,80; Suco de Laranja (x2) - R$ 6,98; Água Mineral (x1) - R$ 1,99;","108,77"
