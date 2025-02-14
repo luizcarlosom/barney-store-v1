@@ -11,11 +11,10 @@
    <children>
       <TableView fx:id="listOrderTable" layoutY="72.0" maxHeight="600.0" maxWidth="600.0" prefHeight="329.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="customerColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Cliente" />
-          <TableColumn fx:id="phoneNumberColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Telefone" />
-            <TableColumn fx:id="addressColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Endereço" />
-            <TableColumn fx:id="totalPriceColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Preço Total" />
-            <TableColumn fx:id="productsColumn" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Pedido" />
+          <TableColumn fx:id="customerColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Cliente" />
+          <TableColumn fx:id="phoneNumberColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Telefone" />
+            <TableColumn fx:id="addressColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Endereço" />
+            <TableColumn fx:id="totalPriceColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Preço Total" />
         </columns>
       </TableView>
       <Button fx:id="backButton" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backPage" text="Voltar" />
