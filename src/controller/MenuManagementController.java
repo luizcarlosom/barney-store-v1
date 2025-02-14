@@ -9,7 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class MenuManagementController {
@@ -106,4 +108,31 @@ public class MenuManagementController {
         }
     }
 
+    @FXML
+    void backPage(ActionEvent event) {
+        try {
+            URL orderPath = getClass().getResource("../view/ManagementView.fxml");
+            FXMLLoader loader = new FXMLLoader(orderPath);
+            Parent newRoot = loader.load();
+
+            Node sourceNode = (Node) event.getSource();
+
+            Scene currentScene = sourceNode.getScene();
+
+            Stage stage = (Stage) currentScene.getWindow();
+
+            stage.setScene(new Scene(newRoot));
+            stage.show();
+        } catch (IOException e) {
+            showAlert(AlertType.ERROR, "Erro ao carregar a página de menu!");
+        }
+    }
+
+    private void showAlert(AlertType alertType, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(alertType == AlertType.ERROR ? "Erro" : "Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

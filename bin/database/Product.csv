@@ -1,7 +1,7 @@
 NAME,CATEGORY,QUANTITY,VALUE
-Cerveja Pilsen,Com Alcool,30,4.99
-Suco de Laranja,Sem Alcool,28,3.49
-Água Mineral,Sem Alcool,99,1.99
+Cerveja Pilsen,Com Alcool,50,4.99
+Suco de Laranja,Sem Alcool,30,3.49
+Água Mineral,Sem Alcool,100,1.99
 Cerveja IPA,Com Alcool,40,5.99
 Refrigerante Cola,Sem Alcool,60,2.99
 Vodka,Com Alcool,25,19.99
@@ -9,5 +9,4 @@ Vodka,Com Alcool,25,19.99
 Whisky,Com Alcool,15,49.99
 Suco de Uva,Sem Alcool,35,4.29
 Cerveja Lager,Com Alcool,55,4.59
-Salgadinho,Petiscos,50,2.5
-Amendoin,Petiscos,10,5.9
+

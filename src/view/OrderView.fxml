@@ -26,9 +26,14 @@
             <TableColumn fx:id="desiredQuantity" editable="false" prefWidth="150.0" sortable="false" style="-fx-background-color: lightblue -fx; -fx-border-color: black; -fx-border-width: 0.5px; -fx-border-style: solid;" text="Quantidade Desejada" />
         </columns>
       </TableView>
-      <Button fx:id="finishedOrderButton" layoutY="341.0" mnemonicParsing="false" onAction="#finishedOrder" prefHeight="30.0" prefWidth="750.0" style="-fx-background-color: lightblue" text="Concluir Pedido">
+      <Button fx:id="finishedOrderButton" layoutX="405.0" layoutY="341.0" mnemonicParsing="false" onAction="#finishedOrder" prefHeight="30.0" prefWidth="195.0" style="-fx-background-color: lightblue" text="Concluir Pedido">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
+      <Button fx:id="buttonBack" layoutX="150.0" layoutY="341.0" mnemonicParsing="false" onAction="#backPage" prefHeight="30.0" prefWidth="195.0" style="-fx-background-color: lightblue" text="Voltar">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

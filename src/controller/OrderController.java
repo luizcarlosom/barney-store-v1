@@ -4,7 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -13,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import model.Order;
 import model.Product;
@@ -24,10 +29,13 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.File;
 import java.util.List;
 
 public class OrderController implements Initializable { 
+    @FXML
+    private Button buttonBack;
 
     @FXML
     private ComboBox<String> categoryComboBox;
@@ -283,4 +291,31 @@ public class OrderController implements Initializable {
         }
     }    
 
+    @FXML
+    void backPage(ActionEvent event) {
+        try {
+            URL orderPath = getClass().getResource("../view/RootView.fxml");
+            FXMLLoader loader = new FXMLLoader(orderPath);
+            Parent newRoot = loader.load();
+
+            Node sourceNode = (Node) event.getSource();
+
+            Scene currentScene = sourceNode.getScene();
+
+            Stage stage = (Stage) currentScene.getWindow();
+
+            stage.setScene(new Scene(newRoot));
+            stage.show();
+        } catch (IOException e) {
+            showAlert(AlertType.ERROR, "Erro ao carregar a página de menu!");
+        }
+    }
+
+    private void showAlert(AlertType alertType, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(alertType == AlertType.ERROR ? "Erro" : "Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
